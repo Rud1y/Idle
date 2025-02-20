@@ -25,10 +25,11 @@ local function SaveData(filename)
 end
 
 local function LoadData(filename)
+    print("l")
     if love.filesystem.getInfo(filename) then
         local contents, size = love.filesystem.read(filename)
         if contents then
-            print(json.decode(contents))
+            print(contents)
             return json.decode(contents)
         end
     end

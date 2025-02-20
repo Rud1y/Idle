@@ -18,16 +18,15 @@ function love.load()
     elseif os == "Android" then
         love.window.setMode(screenWidth, screenHeight, { fullscreen = true })
     end
-
     local Data = Log.LoadData("gameLog.json")
     if Data then
-        Log.log = Data.game
-        Log.playerData = Data.player
+        player = Player:New()
+        player:Initialization(Data.player)
+        game = Game(player)
+        game:Initialization(Data.game)
+    else
+        print("no data")
     end
-    player = Player:New()
-    player:Initialization(Log.playerData)
-    game = Game(player)
-    game:Initialization(Log.log)
 end
 
 function love.update(dt)

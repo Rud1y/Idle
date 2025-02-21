@@ -1,3 +1,5 @@
+---@diagnostic disable:param-type-mismatch
+
 local json = require("dkjson")
 local love = require("love")
 
@@ -11,28 +13,26 @@ local function SaveData(filename)
     }
     local jsonData = json.encode(data, { indent = true })
     print("JSON Data:", jsonData)
-    if jsonData then
-        local success, message = love.filesystem.write(filename, jsonData)
-        if success then
-            print("Data successfully written to " .. filename)
-        else
-            print("Failed to write data: " .. message)
-        end
-        print(love.filesystem.getSaveDirectory())
-        return success
+    local file = io.open(filename, "w")
+    if file then
+        file:write(jsonData)
+        file:close()
     end
+
     return false
 end
 
 local function LoadData(filename)
-    if love.filesystem.getInfo(filename) then
-        local contents, size = love.filesystem.read(filename)
+    local file = io.open(filename, "r")
+    if file then
+        local contents = file:read("*all")
+        file:close()
         if contents then
-            print("loaded data: ")
             print(contents)
             return json.decode(contents)
         end
     end
+
     return nil
 end
 

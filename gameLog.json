@@ -1,0 +1,30 @@
+{
+  "game":[{
+      "level":3
+    }],
+  "player":[{
+      "primarystats":{
+        "speed":15,
+        "attack":10,
+        "hitpoints":100,
+        "defense":10
+      },
+      "equipment":[],
+      "croudcontrol":{
+        "slow":0,
+        "silence":0,
+        "petrify":0,
+        "stun":0
+      },
+      "skin":"",
+      "level":1,
+      "specialstats":{
+        "combo":0,
+        "croudcontrolimmunity":0,
+        "crit":5,
+        "critdamage":150,
+        "combochance":0,
+        "damageovertimechance":0
+      }
+    }]
+}

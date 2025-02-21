@@ -91,7 +91,7 @@ function Forge(player)
 
         SaveData = function(self)
             table.insert(Log.log, self:toTable())
-            Log.SaveData("gameLog.json")
+            Log.SaveData("C:/Users/Raul/OneDrive/Documenti/GitHub/Idle/gameLog.json")
         end,
     }
 end

@@ -95,7 +95,7 @@ function Pet(name)
             self.currentFrame = 1
         end,
 
-        update = function(self, dt)
+        Update = function(self, dt)
             self.timeElapsed = self.timeElapsed + dt
             if self.timeElapsed >= self.animationSpeed then
                 self.timeElapsed = 0

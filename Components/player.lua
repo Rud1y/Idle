@@ -86,7 +86,7 @@ function Player:Initialization(playerInfo)
 
     local pet = Pet()
     pet:Initialization("common")
-    self.equipment = { pet = pet }
+    self.equipment.pet = pet
 
     --Implementation of initializating the equipment after reading from a file the player data
 
@@ -120,6 +120,9 @@ function Player:Update(dt)
     if self.timeElapsed >= self.animationSpeed then
         self.currentFrame = self.currentFrame + 1
         if self.currentFrame > self.animations[self.currentanimation].numframes then
+            if self.currentanimation == "attack" then
+                self.currentanimation = "idle"
+            end
             self.currentFrame = 1
         end
         self.timeElapsed = 0
@@ -174,9 +177,8 @@ function Player:toTable()
 end
 
 function Player:SaveData()
-    local data = self:toTable()
-    table.insert(Log.playerData, data)
-    Log.SaveData("gameLog.json")
+    table.insert(Log.playerData, self:toTable())
+    Log.SaveData("C:/Users/Raul/OneDrive/Documenti/GitHub/Idle/gameLog.json")
 end
 
 return Player

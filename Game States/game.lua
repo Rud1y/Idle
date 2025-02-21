@@ -72,8 +72,6 @@ function Game(player)
                 if self.state.ended then
                     self:GameOver()
                 end
-
-                player:SaveData()
             end
         end,
 

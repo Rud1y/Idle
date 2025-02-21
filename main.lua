@@ -19,6 +19,7 @@ function love.load()
         love.window.setMode(screenWidth, screenHeight, { fullscreen = true })
     end
     local Data = Log.LoadData("gameLog.json")
+    print(Data)
     if Data then
         player = Player:New()
         player:Initialization(Data.player)

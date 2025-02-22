@@ -90,7 +90,7 @@ function Pet(name)
             end
         end,
 
-        changeAnimation = function(self, animation)
+        ChangeAnimation = function(self, animation)
             self.currentanimation = animation
             self.currentFrame = 1
         end,
@@ -109,7 +109,7 @@ function Pet(name)
             end
         end,
 
-        draw = function(self, x, y)
+    Draw = function(self, x, y)
             local anim = self.animations[self.currentanimation]
             love.graphics.draw(anim.image, anim.quads[self.currentFrame], x, y, 0, 3, 3)
         end

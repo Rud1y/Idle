@@ -85,6 +85,7 @@ function Game(player)
             for _, button in pairs(self.buttons) do
                 button:checkHover(love.mouse.getPosition())
             end
+            forge:Update()
         end,
 
         Draw = function(self)

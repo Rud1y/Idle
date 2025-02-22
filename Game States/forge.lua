@@ -1,6 +1,8 @@
 local love = require("love")
 local equipment = require("Components.equipment")
 local Log = require("log")
+local Button = require("Components.button")
+local Dialog = require("Components.dialog")
 
 function Forge(player)
     local function randomDecimal(min, max, decimalPlaces)
@@ -13,7 +15,14 @@ function Forge(player)
 
         probability = {},
 
+        buttons = {},
+
+        confirm = nil,
+
         Initialization = function(self, x)
+            self.buttons = {
+                forgebutton = Button(function() self:createEquipment() end, 100, 500, "", "Assets/UI/home.png", 64, 64)
+            }
             self.level = x.level or 1
             if self.level >=1 and self.level <= 5 then
                 self.probability = {
@@ -75,18 +84,31 @@ function Forge(player)
             else
                 equip:Initialization("legendary")
             end
+            Dialog:SelectDialog("createEquipment", self)
+
+---finish the dialog box after creating an equipment
+
             player.equipment[randomEquipment] = equip
         end,
 
         draw = function(self)
             love.graphics.print("Forge", 0, 0)
             love.graphics.print("Level: " .. self.level, 100, 0)
+            for _, button in pairs(self.buttons) do
+                button:draw()
+            end
         end,
 
         toTable = function(self)
             return {
                 level = self.level
             }
+        end,
+
+        Update = function (self)
+            for _, button in pairs(self.buttons) do
+                button:checkHover(love.mouse.getPosition())
+            end
         end,
 
         SaveData = function(self)

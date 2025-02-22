@@ -34,12 +34,12 @@ end
 function love.update(dt)
     game:Update()
     player:Update(dt)
-    player.equipment.pet:Update(dt)
+    player.pet:Update(dt)
     if love.keyboard.isDown("escape") then
         game:ChangeGameState("ended")
     elseif love.keyboard.isDown("return") then
         player:ChangeAnimation("attack")
-        player.equipment.pet:ChangeAnimation("attack")
+        player.pet:ChangeAnimation("attack")
     end
 end
 

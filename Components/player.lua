@@ -37,6 +37,8 @@ function Player:New()
         animationSpeed = 0.1,
         timeElapsed = 0,
 
+        pet = Pet(),
+
         equipment = {},
     }
     setmetatable(obj, Player)
@@ -86,7 +88,7 @@ function Player:Initialization(playerInfo)
 
     local pet = Pet()
     pet:Initialization("common")
-    self.equipment.pet = pet
+    self.pet = pet
 
     --Implementation of initializating the equipment after reading from a file the player data
 
@@ -149,7 +151,7 @@ function Player:Draw()
         love.graphics.print(stat .. ": " .. value, 10, yOffset)
         yOffset = yOffset + 20
     end
-    self.equipment.pet:draw(190, 250)
+    self.pet:Draw(190, 250)
 end
 
 function Player:ConvertEquipmentToTable(equipment)

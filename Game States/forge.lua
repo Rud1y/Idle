@@ -4,6 +4,8 @@ local Log = require("log")
 local Button = require("Components.button")
 local Dialog = require("Components.dialog")
 
+local dialog = Dialog:New()
+
 function Forge(player)
     local function randomDecimal(min, max, decimalPlaces)
         local factor = 10 ^ decimalPlaces
@@ -12,12 +14,10 @@ function Forge(player)
 
     return {
         level = 1,
-
         probability = {},
-
         buttons = {},
-
         confirm = nil,
+        dialog = false,
 
         Initialization = function(self, x)
             self.buttons = {
@@ -84,7 +84,8 @@ function Forge(player)
             else
                 equip:Initialization("legendary")
             end
-            Dialog:SelectDialog("createEquipment", self)
+
+            dialog:SelectDialog("createEquipment")
 
 ---finish the dialog box after creating an equipment
 
@@ -97,6 +98,10 @@ function Forge(player)
             for _, button in pairs(self.buttons) do
                 button:draw()
             end
+
+            if self.dialog then
+                dialog:Draw()
+            end
         end,
 
         toTable = function(self)
@@ -105,9 +110,15 @@ function Forge(player)
             }
         end,
 
-        Update = function (self)
+        Update = function(self)
+            self.dialog = dialog:State()
             for _, button in pairs(self.buttons) do
                 button:checkHover(love.mouse.getPosition())
+            end
+            if self.dialog then
+                dialog:Update()
+            else
+            
             end
         end,
 

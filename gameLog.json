@@ -1,6 +1,23 @@
 {
+  "game":[{
+      "level":1
+    }],
   "player":[{
       "level":1,
+      "croudcontrol":{
+        "silence":0,
+        "petrify":0,
+        "stun":0,
+        "slow":0
+      },
+      "skin":"",
+      "primarystats":{
+        "speed":15,
+        "hitpoints":100,
+        "defense":10,
+        "attack":10
+      },
+      "equipment":[],
       "specialstats":{
         "combochance":0,
         "damageovertimechance":0,
@@ -8,23 +25,6 @@
         "combo":0,
         "crit":5,
         "critdamage":150
-      },
-      "croudcontrol":{
-        "silence":0,
-        "petrify":0,
-        "stun":0,
-        "slow":0
-      },
-      "primarystats":{
-        "attack":10,
-        "hitpoints":100,
-        "defense":10,
-        "speed":15
-      },
-      "equipment":[],
-      "skin":""
-    }],
-  "game":[{
-      "level":1
+      }
     }]
 }

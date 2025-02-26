@@ -7,8 +7,8 @@ local width, height = love.window.getDesktopDimensions()
 width = math.floor(width / 3)
 local dialogWindow = love.graphics.newImage("Assets/UI/dialog.png")
 local dialogDimX, dialogDimY = dialogWindow:getDimensions()
-local dialogX = (width - dialogDimX) / 2
-local dialogY = (height - dialogDimY) / 2
+local dialogX = (width - dialogDimX * 0.1) / 2
+local dialogY = (height - dialogDimY * 0.2) / 2
 
 Dialog.__index = Dialog
 
@@ -24,16 +24,16 @@ function Dialog:New()
     return obj
 end
 
-function Dialog:SelectDialog(dialogname, object)
+function Dialog:SelectDialog(dialogname)
     self.dialogShowing = true
     local dimx = love.graphics.getWidth(love.graphics.newImage("Assets/UI/text.png"))
     local dimy = love.graphics.getHeight(love.graphics.newImage("Assets/UI/text.png"))
     if dialogname == "createEquipment" then
         self.text = "Would you like to keep this equipemt?"
         self.buttons = {
-            yes = Button(function() self.dialogShowing = false end, dialogX + 25, dialogY + dialogDimY, "", "Assets/UI/text.png", dimx,
+            yes = Button(function() self.dialogShowing = false end, dialogX + 25, dialogY + dialogDimY * 0.2, "", "Assets/UI/text.png", dimx,
             dimy),
-            no = Button(function() self.dialogShowing = false end, dialogX + 25, dialogY + dialogDimY, "",
+            no = Button(function() self.dialogShowing = false end, dialogX + 100, dialogY + dialogDimY * 0.2, "",
             "Assets/UI/text.png", dimx,
             dimy)
         }

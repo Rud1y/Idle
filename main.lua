@@ -9,7 +9,7 @@ function love.load()
     local os = love.system.getOS()
     local screenWidth, screenHeight = love.window.getDesktopDimensions()
 
-    if os == "Windows" then
+    if os == "Windows" or "Linux" then
         local winWidth = math.floor(screenWidth / 3)
         local winHeight = screenHeight
 

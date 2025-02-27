@@ -9,7 +9,7 @@ function Button(func, buttonx, buttony, text, icon, width, height)
         buttony = buttony or 0,
         width = width or 100,
         height = height or 100,
-        text = text or "No text added",
+        text = text or "",
         icon = love.graphics.newImage(icon) or "No icon added",
         scale = 1,
 
@@ -36,8 +36,8 @@ function Button(func, buttonx, buttony, text, icon, width, height)
         end,
 
         draw = function(self)
-            love.graphics.draw(self.icon, self.buttonx + 20 * (1 - self.scale), self.buttony + 20 * (1 - self.scale), 0,
-            self.scale / 10, self.scale / 10)
+            love.graphics.draw(self.icon, self.buttonx + 20 * (1 - self.scale), self.buttony + 20 * (1 - self.scale), 0, self.scale / 10, self.scale / 10)
+            love.graphics.print(self.text, self.buttonx + 20, self.buttony + 5)
         end,
     }
 end

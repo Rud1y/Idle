@@ -3,14 +3,17 @@ local Button = require("Components.button")
 
 local Dialog = {}
 
-local width, height = love.window.getDesktopDimensions()
+local width, height = love.graphics.getDimensions()
 width = math.floor(width / 3)
 local dialogWindow = love.graphics.newImage("Assets/UI/dialog.png")
 local dialogDimX, dialogDimY = dialogWindow:getDimensions()
 local dialogX = (width - dialogDimX * 0.1) / 2
 local dialogY = (height - dialogDimY * 0.2) / 2
-
 Dialog.__index = Dialog
+
+local align = function (Bwidth, Dwidth)
+    return (Dwidth * 0.1 - (Bwidth * 0.1 * 2)) / 3
+end
 
 function Dialog:New()
     local obj = {
@@ -26,14 +29,15 @@ end
 
 function Dialog:SelectDialog(dialogname)
     self.dialogShowing = true
-    local dimx = love.graphics.getWidth(love.graphics.newImage("Assets/UI/text.png"))
-    local dimy = love.graphics.getHeight(love.graphics.newImage("Assets/UI/text.png"))
-    print(dimx .. " " .. dimy)
+    local button = love.graphics.newImage("Assets/UI/text.png")
+    local dimx = button:getWidth()
+    local dimy = button:getHeight()
+    local space = align(button:getWidth(), dialogDimX)
     if dialogname == "createEquipment" then
         self.text = "Would you like to keep this equipemt?"
         self.buttons = {
-            yes = Button(function() self.dialogShowing = false end, dialogX + 25, dialogY + dialogDimY * 0.12, "Confirm", "Assets/UI/text.png", 512,  834),
-            no = Button(function() self.dialogShowing = false end, dialogX + 150, dialogY + dialogDimY * 0.12, "Reject", "Assets/UI/text.png", 512, 834)
+            yes = Button(function() self.dialogShowing = false end, dialogX + space, dialogY + dialogDimY * 0.2 - 4 * space, "Confirm", "Assets/UI/text.png", dimx,  dimy, 0.1),
+            no = Button(function() self.dialogShowing = false end, dialogX + dimx * 0.1 + 2 * space, dialogY + dialogDimY * 0.2 - 4 * space, "Reject", "Assets/UI/text.png", dimx, dimy, 0.1)
         }
     end
 end

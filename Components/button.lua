@@ -1,7 +1,7 @@
 local love = require("love")
 local counter = 0
 
-function Button(func, buttonx, buttony, text, icon, width, height)
+function Button(func, buttonx, buttony, text, icon, width, height, scale)
     func = func or function() print("This button has no function attached") end
 
     return {
@@ -9,13 +9,14 @@ function Button(func, buttonx, buttony, text, icon, width, height)
         buttony = buttony or 0,
         width = width or 100,
         height = height or 100,
-        text = text or "",
+        text = text,
         icon = love.graphics.newImage(icon) or "No icon added",
         scale = 1,
+        drawScale = scale or 1,
 
         checkHover = function(self, mousex, mousey)
-            if mousex >= self.buttonx and mousex <= self.buttonx + self.width then
-                if mousey >= self.buttony and mousey <= self.buttony + self.height then
+            if mousex >= self.buttonx and mousex <= self.buttonx + self.width * self.drawScale then
+                if mousey >= self.buttony and mousey <= self.buttony + self.height * self.drawScale then
                     if love.mouse.isDown(1) and counter == 0 then
                         self:click()
                         counter = 1
@@ -36,8 +37,8 @@ function Button(func, buttonx, buttony, text, icon, width, height)
         end,
 
         draw = function(self)
-            love.graphics.draw(self.icon, self.buttonx + 20 * (1 - self.scale), self.buttony + 20 * (1 - self.scale), 0, self.scale / 10, self.scale / 10)
-            love.graphics.print(self.text, self.buttonx + 20, self.buttony + 5)
+            love.graphics.draw(self.icon, self.buttonx + 20 * (1 - self.scale), self.buttony + 20 * (1 - self.scale), 0, self.drawScale, self.drawScale)
+            love.graphics.print(self.text, self.buttonx + 35 * (2 - self.scale), self.buttony + 5 * (2 - self.scale))
         end,
     }
 end

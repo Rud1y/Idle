@@ -43,13 +43,17 @@ function Game(player)
             shop = Shop(player)
             stable = Stable(player)
             tower = Tower(player)
+            local back = love.graphics.newImage("Assets/UI/back.png")
+            local Bwidth = back:getWidth()
+            local Bheight = back:getHeight()
+            local scale = love.graphics.getWidth() / (5 * Bwidth)
 
             self.buttons = {
-                backbutton = Button(function() self:ChangeGameState(self.previous) end, 64, self.window["height"] - 64, "", "Assets/UI/back.png", 64, 64),
-                exitbutton = Button(function() self:GameOver() end, 128, self.window["height"] - 64, "", "Assets/UI/exit.png", 64, 64),
-                homebutton = Button(function () self:ChangeGameState("running") end, 192, self.window["height"] - 64, "", "Assets/UI/home.png", 64, 64),
-                rewindebutton = Button(function() self:ChangeGameState("forge") end, 256, self.window["height"] - 64, "", "Assets/UI/rewinde.png", 64, 64),
-                settingsbutton = Button(function() self:ChangeGameState("settings") end, 320, self.window["height"] - 64, "", "Assets/UI/settings.png", 64, 64)
+                backbutton = Button(function() self:ChangeGameState(self.previous) end, 0, self.window["height"] - Bheight * scale, "", "Assets/UI/back.png", Bwidth, Bheight, scale),
+                exitbutton = Button(function() self:GameOver() end, Bwidth * scale, self.window["height"] - Bheight * scale, "", "Assets/UI/exit.png", Bwidth, Bheight, scale),
+                homebutton = Button(function () self:ChangeGameState("running") end, Bwidth * 2 * scale, self.window["height"] - Bheight * scale, "", "Assets/UI/home.png", Bwidth, Bheight, scale),
+                rewindebutton = Button(function() self:ChangeGameState("forge") end, Bwidth * 3 * scale, self.window["height"] - Bheight * scale, "", "Assets/UI/rewinde.png", Bwidth, Bheight, scale),
+                settingsbutton = Button(function() self:ChangeGameState("settings") end, Bwidth * 4 * scale, self.window["height"] - Bheight * scale, "", "Assets/UI/settings.png", Bwidth, Bheight, scale)
             }
         end,
 
@@ -82,10 +86,11 @@ function Game(player)
         end,
 
         Update = function(self)
-            for _, button in pairs(self.buttons) do
-                button:checkHover(love.mouse.getPosition())
+            if not forge:Update() then
+                for _, button in pairs(self.buttons) do
+                    button:checkHover(love.mouse.getPosition())
+                end
             end
-            forge:Update()
         end,
 
         Draw = function(self)

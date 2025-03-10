@@ -20,8 +20,9 @@ function Forge(player)
         dialog = false,
 
         Initialization = function(self, x)
+            local forge = love.graphics.newImage("Assets/UI/home.png")
             self.buttons = {
-                forgebutton = Button(function() self:createEquipment() end, 100, 500, "", "Assets/UI/home.png", 64, 64)
+                forgebutton = Button(function() self:createEquipment() end, 100, 500, "", "Assets/UI/home.png", forge:getWidth(), forge:getHeight(), 0.1)
             }
             self.level = x.level or 1
             if self.level >=1 and self.level <= 5 then
@@ -112,14 +113,17 @@ function Forge(player)
 
         Update = function(self)
             self.dialog = dialog:State()
-            for _, button in pairs(self.buttons) do
-                button:checkHover(love.mouse.getPosition())
-            end
-            if self.dialog then
-                dialog:Update()
+            if not self.dialog then
+                for _, button in pairs(self.buttons) do
+                    button:checkHover(love.mouse.getPosition())
+                end
             else
-            
+                for _, button in pairs(self.buttons) do
+                    button.scale = 1
+                end
+                dialog:Update()
             end
+            return self.dialog
         end,
 
         SaveData = function(self)

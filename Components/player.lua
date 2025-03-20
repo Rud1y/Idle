@@ -90,7 +90,7 @@ function Player:Initialization(playerInfo)
     pet:Initialization("common")
     self.pet = pet
 
-    --Implementation of initializating the equipment after reading from a file the player data
+---modify initialization logic
 
     for _, e in pairs(self.equipment) do
         for stat, value in pairs(e.primarystats) do
@@ -154,19 +154,6 @@ function Player:Draw()
     self.pet:Draw(190, 250)
 end
 
-function Player:ConvertEquipmentToTable(equipment)
-    local cleanEquipment = {}
-    for i, item in ipairs(equipment) do
-        cleanEquipment[i] = {
-            type = item.type,
-            rarity = item.rarity,
-            primarystats = item.primarystats,
-            specialstats = item.specialstats
-        }
-    end
-    return cleanEquipment
-end
-
 function Player:toTable()
     return {
         level = self.level,
@@ -174,11 +161,12 @@ function Player:toTable()
         specialstats = self.specialstats,
         croudcontrol = self.croudcontrol,
         skin = self.skin,
-        equipment = self:ConvertEquipmentToTable(self.equipment)
+        equipment = self.equipment
     }
 end
 
 function Player:SaveData()
+    table.remove(Log.playerData, 1)
     table.insert(Log.playerData, self:toTable())
     Log.SaveData("C:/Users/Raul/OneDrive/Documenti/GitHub/Idle/gameLog.json")
 end

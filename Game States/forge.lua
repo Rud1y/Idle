@@ -4,6 +4,8 @@ local Log = require("log")
 local Button = require("Components.button")
 local Dialog = require("Components.dialog")
 
+local Data = Log.LoadData("C:/Users/Raul/OneDrive/Documenti/GitHub/Idle/gameLog.json")
+
 local dialog = Dialog:New()
 
 function Forge(player)
@@ -16,8 +18,9 @@ function Forge(player)
         level = 1,
         probability = {},
         buttons = {},
-        confirm = nil,
+        confirm = false,
         dialog = false,
+        toEquip = {},
 
         Initialization = function(self, x)
             local forge = love.graphics.newImage("Assets/UI/home.png")
@@ -58,6 +61,8 @@ function Forge(player)
                     legendary = 3 + (self.level - 16) * 0.5
                 }
             end
+
+            self.toEquip = {}
         end,
 
         createEquipment = function(self)
@@ -86,11 +91,16 @@ function Forge(player)
                 equip:Initialization("legendary")
             end
 
-            dialog:SelectDialog("createEquipment")
+            print(equip)
 
----finish the dialog box after creating an equipment
+            table.insert(self.toEquip, equip)
+            table.insert(self.toEquip, randomEquipment)
 
-            player.equipment[randomEquipment] = equip
+            if player.equipment[randomEquipment] and player.equipment[randomEquipment].type then
+                dialog:SelectDialog("createEquipment", true, equip, player.equipment[randomEquipment], self)
+            else
+                dialog:SelectDialog("createEquipment", false, equip, "", self)
+            end
         end,
 
         draw = function(self)
@@ -122,7 +132,16 @@ function Forge(player)
                     button.scale = 1
                 end
                 dialog:Update()
+                if self.confirm then
+                    player.equipment[self.toEquip[2]] = self.toEquip[1]
+                    self.confirm = false
+                    self.toEquip = {}
+                    print(self.toEquip[1])
+                end
             end
+
+---recalculation of stats after new equipment is added
+
             return self.dialog
         end,
 

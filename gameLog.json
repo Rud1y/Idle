@@ -1,28 +1,129 @@
 {
   "player":[{
+      "skin":"",
       "primarystats":{
-        "speed":15,
-        "hitpoints":100,
-        "defense":10,
-        "attack":10
+        "speed":206.5,
+        "defense":173,
+        "hitpoints":1589,
+        "attack":259.5
       },
-      "equipment":[],
       "level":1,
+      "equipment":{
+        "head":{
+          "statscaling":1,
+          "background":{
+            "blue":0.56862745098039,
+            "red":0.48627450980392,
+            "green":0.51764705882353
+          },
+          "skin":"Assets/UI/sword4.png",
+          "primarystats":{
+            "speed":17,
+            "defense":7,
+            "hitpoints":91,
+            "attack":7
+          },
+          "rarity":"common",
+          "type":"head",
+          "specialstatscount":0,
+          "specialstats":[]
+        },
+        "legs":{
+          "statscaling":1,
+          "primarystats":{
+            "speed":17,
+            "defense":8,
+            "hitpoints":77,
+            "attack":20
+          },
+          "background":{
+            "blue":0.56862745098039,
+            "red":0.48627450980392,
+            "green":0.51764705882353
+          },
+          "type":"legs",
+          "skin":"Assets/UI/sword1.png",
+          "rarity":"common",
+          "specialstatscount":0,
+          "specialstats":[]
+        },
+        "feet":{
+          "skin":"Assets/UI/sword8.png",
+          "background":{
+            "blue":0.21176470588235,
+            "red":0.15686274509804,
+            "green":0.81960784313725
+          },
+          "statscaling":1.5,
+          "primarystats":{
+            "speed":22.5,
+            "attack":22.5,
+            "hitpoints":138,
+            "defense":9
+          },
+          "rarity":"uncommon",
+          "type":"feet",
+          "specialstatscount":1,
+          "specialstats":{
+            "combochance":4
+          }
+        },
+        "weapon":{
+          "statscaling":1,
+          "primarystats":{
+            "speed":10,
+            "defense":12,
+            "hitpoints":105,
+            "attack":17
+          },
+          "skin":"Assets/UI/sword5.png",
+          "background":{
+            "blue":0.56862745098039,
+            "red":0.48627450980392,
+            "green":0.51764705882353
+          },
+          "rarity":"common",
+          "type":"weapon",
+          "specialstatscount":0,
+          "specialstats":[]
+        },
+        "ring":{
+          "skin":"Assets/UI/sword6.png",
+          "background":{
+            "blue":0.21176470588235,
+            "red":0.15686274509804,
+            "green":0.81960784313725
+          },
+          "statscaling":1.5,
+          "primarystats":{
+            "speed":9,
+            "defense":18,
+            "hitpoints":139.5,
+            "attack":24
+          },
+          "rarity":"uncommon",
+          "type":"ring",
+          "specialstatscount":1,
+          "specialstats":{
+            "block":7
+          }
+        }
+      },
+      "croudcontrol":{
+        "stun":0,
+        "slow":0,
+        "silence":0,
+        "petrify":0
+      },
       "specialstats":{
         "crit":5,
         "critdamage":150,
-        "combochance":0,
+        "combochance":4,
         "damageovertimechance":0,
         "croudcontrolimmunity":0,
-        "combo":0
-      },
-      "croudcontrol":{
-        "silence":0,
-        "petrify":0,
-        "stun":0,
-        "slow":0
-      },
-      "skin":""
+        "combo":0,
+        "block":14
+      }
     }],
   "game":[{
       "level":1

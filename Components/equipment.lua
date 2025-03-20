@@ -9,15 +9,21 @@ function Equipment:New(name, playerlevel)
     local obj = {
         statscaling = 1,
         primarystats = {
-            hitpoints = love.math.random(20, 100) * POLYNOMIAL_GROWTH,
-            attack = love.math.random(5, 20) * POLYNOMIAL_GROWTH,
-            defense = love.math.random(5, 10) * POLYNOMIAL_GROWTH,
-            speed = love.math.random(5, 15) * POLYNOMIAL_GROWTH
+            hitpoints = math.floor(love.math.random(20, 100) * POLYNOMIAL_GROWTH),
+            attack = math.floor(love.math.random(5, 20) * POLYNOMIAL_GROWTH),
+            defense = math.floor(love.math.random(5, 10) * POLYNOMIAL_GROWTH),
+            speed = math.floor(love.math.random(5, 15) * POLYNOMIAL_GROWTH)
         },
         rarity = "common",
         specialstatscount = 0,
         specialstats = {},
-        type = name
+        skin = "",
+        type = name,
+        background = {
+            red = 1,
+            green = 1,
+            blue = 1
+        }
     }
 
     setmetatable(obj, Equipment)
@@ -29,18 +35,33 @@ function Equipment:Initialization(rarity)
     self.rarity = rarity or self.rarity
     if self.rarity == "common" then
         self.specialstatscount = 0
+        self.background["red"] = 124 / 255
+        self.background["green"] = 132 / 255
+        self.background["blue"] = 145 / 255
     elseif self.rarity == "uncommon" then
         self.specialstatscount = 1
         self.statscaling = 1.5
+        self.background["red"] = 40 / 255
+        self.background["green"] = 209 / 255
+        self.background["blue"] = 54 / 255
     elseif self.rarity == "rare" then
         self.specialstatscount = 1
         self.statscaling = 2.2
+        self.background["red"] = 40 / 255
+        self.background["green"] = 54 / 255
+        self.background["blue"] = 209 / 255
     elseif self.rarity == "epic" then
         self.specialstatscount = 2
         self.statscaling = 3.1
+        self.background["red"] = 150 / 255
+        self.background["green"] = 13 / 255
+        self.background["blue"] = 209 / 255
     elseif self.rarity == "legendary" then
         self.specialstatscount = 3
         self.statscaling = 4.5
+        self.background["red"] = 237 / 255
+        self.background["green"] = 213 / 255
+        self.background["blue"] = 28 / 255
     end
 
     local stats = {
@@ -60,6 +81,8 @@ function Equipment:Initialization(rarity)
             count = count + 1
         end
     end
+
+    self.skin = "Assets/UI/sword" .. love.math.random(1, 9) .. ".png"
 
     for stat, value in pairs(self.primarystats) do
         self.primarystats[stat] = value * self.statscaling

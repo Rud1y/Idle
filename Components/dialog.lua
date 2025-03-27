@@ -88,6 +88,8 @@ function Dialog:Draw()
     local Swidth = love.graphics.getWidth(newSkin)
     local space = align(Swidth, dialogDimX)
 
+---draw the window dynamicaly
+
     if owned then
         local currentSkin = love.graphics.newImage(self.currentSkin.skin)
         love.graphics.print("Old Equipment", dialogX + space * 0.5, dialogY + dialogDimY * 0.4 - 4.5 * space)

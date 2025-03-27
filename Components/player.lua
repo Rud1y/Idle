@@ -154,6 +154,28 @@ function Player:Draw()
     self.pet:Draw(190, 250)
 end
 
+function Player:RecalculationStats()
+    print(#self.equipment)
+    for _, e in pairs(self.equipment) do
+        for stat, value in pairs(e.primarystats) do
+            self.primarystats[stat] = self.primarystats[stat] + value
+        end
+        for stat, value in pairs(e.specialstats) do
+            if stat == "stun" or stat == "slow" or stat == "silence" or stat == "petrify" then
+                if self.croudcontrol[stat] == nil then
+                    self.croudcontrol[stat] = 0
+                end
+                self.croudcontrol[stat] = self.croudcontrol[stat] + value
+            else
+                if self.specialstats[stat] == nil then
+                    self.specialstats[stat] = 0
+                end
+                self.specialstats[stat] = self.specialstats[stat] + value
+            end
+        end
+    end
+end
+
 function Player:toTable()
     return {
         level = self.level,

@@ -62,7 +62,7 @@ function Forge(player)
                 }
             end
 
-            self.toEquip = {}
+            self.toEquip = self.toEquip or {}
         end,
 
         createEquipment = function(self)
@@ -92,9 +92,12 @@ function Forge(player)
             end
 
             print(equip)
+            print(#self.toEquip)
 
             table.insert(self.toEquip, equip)
             table.insert(self.toEquip, randomEquipment)
+
+            print(#self.toEquip)
 
             if player.equipment[randomEquipment] and player.equipment[randomEquipment].type then
                 dialog:SelectDialog("createEquipment", true, equip, player.equipment[randomEquipment], self)
@@ -135,8 +138,9 @@ function Forge(player)
                 if self.confirm then
                     player.equipment[self.toEquip[2]] = self.toEquip[1]
                     self.confirm = false
-                    self.toEquip = {}
                     print(self.toEquip[1])
+                    self.toEquip = {}
+                    player.RecalculationStats()
                 end
             end
 

@@ -1,128 +1,190 @@
 {
   "player":[{
-      "skin":"",
-      "primarystats":{
-        "speed":206.5,
-        "defense":173,
-        "hitpoints":1589,
-        "attack":259.5
-      },
-      "level":1,
       "equipment":{
-        "head":{
-          "statscaling":1,
-          "background":{
-            "blue":0.56862745098039,
-            "red":0.48627450980392,
-            "green":0.51764705882353
-          },
-          "skin":"Assets/UI/sword4.png",
+        "chest":{
           "primarystats":{
-            "speed":17,
-            "defense":7,
-            "hitpoints":91,
-            "attack":7
+            "hitpoints":37,
+            "defense":12,
+            "speed":15,
+            "attack":10
           },
+          "type":"chest",
+          "statscaling":1,
           "rarity":"common",
-          "type":"head",
           "specialstatscount":0,
-          "specialstats":[]
+          "specialstats":[],
+          "skin":"Assets/UI/sword2.png",
+          "background":{
+            "red":0.48627450980392,
+            "green":0.51764705882353,
+            "blue":0.56862745098039
+          }
         },
         "legs":{
-          "statscaling":1,
-          "primarystats":{
-            "speed":17,
-            "defense":8,
-            "hitpoints":77,
-            "attack":20
-          },
           "background":{
-            "blue":0.56862745098039,
-            "red":0.48627450980392,
-            "green":0.51764705882353
+            "red":0.15686274509804,
+            "green":0.81960784313725,
+            "blue":0.21176470588235
           },
           "type":"legs",
-          "skin":"Assets/UI/sword1.png",
-          "rarity":"common",
-          "specialstatscount":0,
-          "specialstats":[]
-        },
-        "feet":{
-          "skin":"Assets/UI/sword8.png",
-          "background":{
-            "blue":0.21176470588235,
-            "red":0.15686274509804,
-            "green":0.81960784313725
+          "skin":"Assets/UI/sword6.png",
+          "rarity":"uncommon",
+          "specialstatscount":1,
+          "specialstats":{
+            "petrify":2
           },
           "statscaling":1.5,
           "primarystats":{
-            "speed":22.5,
-            "attack":22.5,
-            "hitpoints":138,
-            "defense":9
+            "hitpoints":76.5,
+            "defense":18,
+            "speed":19.5,
+            "attack":30
+          }
+        },
+        "feet":{
+          "primarystats":{
+            "hitpoints":45,
+            "defense":9,
+            "speed":27,
+            "attack":24
           },
-          "rarity":"uncommon",
           "type":"feet",
+          "statscaling":1.5,
+          "rarity":"uncommon",
           "specialstatscount":1,
           "specialstats":{
-            "combochance":4
+            "damageovertimechance":4
+          },
+          "skin":"Assets/UI/sword3.png",
+          "background":{
+            "red":0.15686274509804,
+            "green":0.81960784313725,
+            "blue":0.21176470588235
           }
         },
         "weapon":{
-          "statscaling":1,
           "primarystats":{
-            "speed":10,
-            "defense":12,
             "hitpoints":105,
+            "defense":12,
+            "speed":10,
             "attack":17
           },
+          "type":"weapon",
+          "statscaling":1,
+          "rarity":"common",
+          "specialstatscount":0,
+          "specialstats":[],
           "skin":"Assets/UI/sword5.png",
           "background":{
-            "blue":0.56862745098039,
             "red":0.48627450980392,
-            "green":0.51764705882353
-          },
-          "rarity":"common",
-          "type":"weapon",
-          "specialstatscount":0,
-          "specialstats":[]
+            "green":0.51764705882353,
+            "blue":0.56862745098039
+          }
         },
         "ring":{
-          "skin":"Assets/UI/sword6.png",
           "background":{
-            "blue":0.21176470588235,
             "red":0.15686274509804,
-            "green":0.81960784313725
+            "green":0.81960784313725,
+            "blue":0.21176470588235
+          },
+          "type":"ring",
+          "statscaling":1.5,
+          "rarity":"uncommon",
+          "specialstatscount":1,
+          "specialstats":{
+            "dodge":9
+          },
+          "skin":"Assets/UI/sword8.png",
+          "primarystats":{
+            "hitpoints":138,
+            "defense":10.5,
+            "speed":9,
+            "attack":34.5
+          }
+        },
+        "amulet":{
+          "background":{
+            "red":0.48627450980392,
+            "green":0.51764705882353,
+            "blue":0.56862745098039
+          },
+          "type":"amulet",
+          "skin":"Assets/UI/sword8.png",
+          "rarity":"common",
+          "specialstatscount":0,
+          "specialstats":[],
+          "statscaling":1,
+          "primarystats":{
+            "hitpoints":116,
+            "defense":8,
+            "speed":16,
+            "attack":8
+          }
+        },
+        "stone":{
+          "primarystats":{
+            "hitpoints":61,
+            "defense":11,
+            "speed":15,
+            "attack":15
+          },
+          "type":"stone",
+          "statscaling":1,
+          "rarity":"common",
+          "specialstatscount":0,
+          "specialstats":[],
+          "skin":"Assets/UI/sword1.png",
+          "background":{
+            "red":0.48627450980392,
+            "green":0.51764705882353,
+            "blue":0.56862745098039
+          }
+        },
+        "head":{
+          "background":{
+            "red":0.15686274509804,
+            "green":0.81960784313725,
+            "blue":0.21176470588235
+          },
+          "type":"head",
+          "skin":"Assets/UI/sword1.png",
+          "rarity":"uncommon",
+          "specialstatscount":1,
+          "specialstats":{
+            "silence":6
           },
           "statscaling":1.5,
           "primarystats":{
-            "speed":9,
+            "hitpoints":160.5,
             "defense":18,
-            "hitpoints":139.5,
-            "attack":24
-          },
-          "rarity":"uncommon",
-          "type":"ring",
-          "specialstatscount":1,
-          "specialstats":{
-            "block":7
+            "speed":16.5,
+            "attack":31.5
           }
         }
       },
       "croudcontrol":{
-        "stun":0,
-        "slow":0,
         "silence":0,
-        "petrify":0
+        "petrify":0,
+        "stun":0,
+        "slow":0
       },
+      "level":1,
       "specialstats":{
-        "crit":5,
-        "critdamage":150,
-        "combochance":4,
-        "damageovertimechance":0,
-        "croudcontrolimmunity":0,
+        "combochance":40,
+        "damageovertimechance":8,
         "combo":0,
-        "block":14
+        "croudcontrolimmunity":0,
+        "dodge":90,
+        "block":21,
+        "crit":33,
+        "critdamage":150
+      },
+      "skin":"",
+      "primarystats":{
+        "hitpoints":8638.3,
+        "defense":954.6,
+        "speed":1339.4,
+        "attack":1752.2
       }
     }],
   "game":[{

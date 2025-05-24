@@ -154,6 +154,8 @@ function Player:Draw()
     self.pet:Draw(190, 250)
 end
 
+---fix function to recalculate stats when equipment is added or removed
+
 function Player:RecalculationStats()
     print(#self.equipment)
     for _, e in pairs(self.equipment) do
